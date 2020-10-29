@@ -112,10 +112,10 @@ int main(int argc, char **argv)
 	unsigned int skyboxLoc = glGetUniformLocation(compProgram, "skybox");
 	
 	//init screen shader
-	//screenShader = Shader("../PathTracer/Shaders/screenShader.vert", "../PathTracer/Shaders/screenShader.frag");
-	screenShader = Shader("../PathTracer/Shaders/photonmap.vert", "../PathTracer/Shaders/photonmap.frag");
+	screenShader = Shader("../PathTracer/Shaders/screenShader.vert", "../PathTracer/Shaders/screenShader.frag");
+	//screenShader = Shader("../PathTracer/Shaders/photonmap.vert", "../PathTracer/Shaders/photonmap.frag");
 	screenShader.use();
-	//screenShader.setInt("screenTexture", 0);
+	screenShader.setInt("screenTexture", 0);
 
 	// Create initial image texture
 	glGenTextures(1, &textureColorbuffer);
@@ -125,8 +125,8 @@ int main(int argc, char **argv)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, SCR_WIDTH, SCR_HEIGHT, 0, GL_RGBA, GL_FLOAT, NULL);
-	//glBindImageTexture(0, textureColorbuffer, 0, GL_FALSE, 0, GL_WRITE_ONLY, GL_RGBA32F);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, SCR_WIDTH, SCR_HEIGHT, 0, GL_RGBA, GL_FLOAT, NULL);
+	glBindImageTexture(0, textureColorbuffer, 0, GL_FALSE, 0, GL_WRITE_ONLY, GL_RGBA32F);
 	
 	bool raytracing = true;
 		
@@ -147,7 +147,7 @@ int main(int argc, char **argv)
 
 		processInput(window);
 
-		if (false && initialRun)
+		if (initialRun)
 		{
 			myScene->updateScene();
 
@@ -160,10 +160,10 @@ int main(int argc, char **argv)
 
 			myScene->updateUniforms(compProgram);
 
-			glActiveTexture(GL_TEXTURE_CUBE_MAP);
-			glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxID);
-			glUniform1i(skyboxLoc, 0);
-			glActiveTexture(GL_TEXTURE0);
+			//glActiveTexture(GL_TEXTURE_CUBE_MAP);
+			//glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxID);
+			//glUniform1i(skyboxLoc, 0);
+			//glActiveTexture(GL_TEXTURE0);
 
 			glBindImageTexture(0, textureColorbuffer, 0, GL_FALSE, 0, GL_WRITE_ONLY, GL_RGBA32F);
 
@@ -179,41 +179,13 @@ int main(int argc, char **argv)
 			initialRun = false;
 		}
 
-		if (initialRun)
-		{
-			myScene->updateScene();
-
-			screenShader.use();
-
-			glm::vec3 eye = myScene->eye;
-			glm::vec3 lookAt = myScene->lookAt;
-			glm::vec3 up = myScene->up;
-			float fovy = myScene->fovy;
-
-			myScene->updateUniforms(screenShader.ID);
-
-			glActiveTexture(GL_TEXTURE_CUBE_MAP);
-			glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxID);
-			glUniform1i(skyboxLoc, 0);
-			glActiveTexture(GL_TEXTURE0);
-
-			// set clear color to white (not really necessery actually, since we won't be able to see behind the quad anyways)
-			glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
-
-			glBindVertexArray(quadVAO);
-			glDrawArrays(GL_TRIANGLES, 0, 6);
-			initialRun = false;
-		}
-		/* * /
+		/* */
 		screenShader.use();
-		// Bind our texture we are creating
-		//glActiveTexture(GL_TEXTURE0);
+
 		glBindVertexArray(quadVAO);
-		//glBindTexture(GL_TEXTURE_3D, textureColorbuffer);
 		glBindTexture(GL_TEXTURE_2D, textureColorbuffer);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
-		*/
+		/**/
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();

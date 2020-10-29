@@ -22,7 +22,7 @@ Lights {
 
 Materials {
 	Material {
-		textureFilename /Media/textures/marble.jpg
+		textureFilename ./Media/textures/marble.jpg
 		diffuseColor 0.5 0.5 0.5
 		specularColor 0.5 0.5 0.5
 		reflectiveColor 0.6 0.6 0.6
@@ -40,7 +40,7 @@ Materials {
 		indexOfRefraction 0.6
 	}
 	Material {
-		textureFilename /Media/textures/check1024.jpg
+		textureFilename ./Media/textures/check1024.jpg
 		diffuseColor 0.5 0.5 0.5
 		specularColor 0.5 0.5 0.5
 		reflectiveColor 0 0 0

@@ -20,7 +20,7 @@ Lights {
 
 Materials {
 	Material {
-		textureFilename /Media/textures/waterlilies.jpg
+		textureFilename ./Media/textures/waterlilies.jpg
 		diffuseColor 0.5 0.5 0.5
 		specularColor 0.5 0.5 0.5
 		reflectiveColor 0 0 0
