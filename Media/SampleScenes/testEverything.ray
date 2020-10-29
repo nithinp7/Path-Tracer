@@ -1,0 +1,137 @@
+Background {
+	color 0.15 0.15 0.25
+	ambientLight 1 1 1 
+}
+
+Camera {
+	eye 0 4 0
+	lookAt 10 0 0
+	up 0 1 0
+	fovy 45
+}
+Lights {
+    Light {
+		position 9 -1 0
+		color 0.2 0.2 0.2
+	}
+	Light {
+		position 0 -4 -2
+		color 0.5 0.5 0.5
+	}
+}
+
+Materials {
+	Material {
+		textureFilename /Media/textures/marble.jpg
+		diffuseColor 0.5 0.5 0.5
+		specularColor 0.5 0.5 0.5
+		reflectiveColor 0.6 0.6 0.6
+		shininess 50
+		transparentColor 0 0 0 
+		indexOfRefraction 0.6
+	}
+	Material {
+		textureFilename NULL
+		diffuseColor 0.2 0.2 0.2
+		specularColor 0.3 0.3 0.3
+		reflectiveColor 0.5 0.5 0.5
+		shininess 50
+		transparentColor 0 0 0 
+		indexOfRefraction 0.6
+	}
+	Material {
+		textureFilename /Media/textures/check1024.jpg
+		diffuseColor 0.5 0.5 0.5
+		specularColor 0.5 0.5 0.5
+		reflectiveColor 0 0 0
+		shininess 50
+		transparentColor 0 0 0 
+		indexOfRefraction 0.6
+	}
+	Material {
+		textureFilename NULL
+		diffuseColor 0.1 0.1 0.1
+		specularColor 0.1 0.1 0.1
+		reflectiveColor 0.3 0.3 0.3
+		shininess 50
+		transparentColor 0.7 0.7 0.7
+		indexOfRefraction 0.5
+	}
+	Material {
+		textureFilename NULL
+		diffuseColor 0.1 0.1 0.1  
+		specularColor 0.1 0.1 0.1 
+		reflectiveColor 0.5 0.5 0.5
+		shininess 50
+		transparentColor 0 0 0 
+		indexOfRefraction 0.6
+	}
+}
+
+Group {
+
+	Sphere {
+		materialIndex 0
+		center 10 3 0
+		radius 2
+	}
+	Sphere {
+		materialIndex 3
+		center 11 0 3
+		radius 1
+	}
+	Sphere {
+		materialIndex 4
+		center 11 0 -3
+		radius 1
+	}
+
+	Sphere {
+		materialIndex 3
+		center 11 2 4
+		radius 1
+	}
+	Sphere {
+		materialIndex 4
+		center 11 3 -2
+		radius 1
+	}
+		
+	Triangle {
+		vertex0 0 -5 -5
+		vertex1 0 -5 5
+		vertex2 15 -1 -5
+		tex_xy_0 1 0
+		tex_xy_1 0 0
+		tex_xy_2 0 1
+		materialIndex 1
+	}
+	Triangle {
+		vertex0 15 -1 -5
+		vertex1 0 -5 5
+		vertex2 15 -1 5
+		tex_xy_0 1 0
+		tex_xy_1 0 0
+		tex_xy_2 0 1
+		materialIndex 1
+	}
+	Triangle {
+		vertex0 11 -5 -5
+		vertex1 11 5 -5
+		vertex2 11 -5 5
+		tex_xy_0 1 1
+		tex_xy_1 1 0
+		tex_xy_2 0 1
+		materialIndex 2
+	}
+	Triangle {
+		vertex0 11 5 5
+		vertex1 11 -5 5
+		vertex2 11 5 -5
+		tex_xy_0 0 0
+		tex_xy_1 0 1
+		tex_xy_2 1 0
+		materialIndex 2
+	}
+
+}

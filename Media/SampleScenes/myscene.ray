@@ -1,0 +1,83 @@
+# author: Nithin Pranesh
+
+Background {
+	# Color of the background 
+	color 0.15 0.15 0.25 # blue-gray
+	# low intensity white light
+	ambientLight 1 1 1 
+}
+
+Camera {
+	eye -10 4 0
+	lookAt 10 0 0
+	up 0 1 0
+	fovy 45
+}
+Lights {
+    	Light {
+		position 0 10 10
+		color 0.5 0.5 0.5
+	}
+}
+
+Materials {
+	Material {
+		textureFilename NULL
+		diffuseColor 0.5 0 0
+		specularColor 0.3 0.3 0.3
+		reflectiveColor 0.3 0.3 0.3
+		shininess 50
+		transparentColor 0 0 0 
+		indexOfRefraction 0.6
+	}
+	Material {
+		textureFilename NULL
+		diffuseColor 0.5 0.5 0.5
+		specularColor 0.3 0.3 0.3
+		reflectiveColor 0.5 0.5 0.5
+		shininess 50
+		transparentColor 0 0 0 
+		indexOfRefraction 0.6
+	}
+	Material {
+		textureFilename NULL
+		diffuseColor 0 0 0.5
+		specularColor 0.3 0.3 0.3
+		reflectiveColor 0.3 0.3 0.3
+		shininess 50
+		transparentColor 0 0 0 
+		indexOfRefraction 0.6
+	}
+}
+
+Group {
+	Sphere {
+		materialIndex 0
+		center 10 6 4
+		radius 2
+	}
+	
+	Sphere {
+		materialIndex 1
+		center 10 6 0
+		radius 2
+	}
+
+	Sphere {
+		materialIndex 2
+		center 10 9 3
+		radius 2 
+	}
+
+	Sphere {
+		materialIndex 1
+		center 13 8 5
+		radius 2 
+	}
+
+	Sphere {
+		materialIndex 0
+		center 7 3 2
+		radius 2
+	}
+}
